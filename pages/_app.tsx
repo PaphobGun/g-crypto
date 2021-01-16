@@ -5,11 +5,13 @@ import type { AppProps } from 'next/app';
 
 import { theme } from 'styles/theme';
 import GlobalStyle from 'styles/globals';
+import fetcher from 'utils/fetcher';
 
 const MainApp = ({ Component, pageProps }: AppProps) => {
   return (
     <SWRConfig
       value={{
+        fetcher,
         revalidateOnFocus: false,
       }}
     >

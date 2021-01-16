@@ -1,7 +1,7 @@
-import Layout from 'components/Layouts';
+import HomeModule from 'modules/Home';
 
 const Landing = () => {
-  return <Layout>CONTENT</Layout>;
+  return <HomeModule />;
 };
 
 export default Landing;
