@@ -1,3 +1,4 @@
+import 'styles/antd.less';
 import { SWRConfig } from 'swr';
 import { ThemeProvider } from 'styled-components';
 import type { AppProps } from 'next/app';

@@ -1,5 +1,7 @@
+import Layout from 'components/Layouts';
+
 const Landing = () => {
-  return <div>HELLO</div>;
+  return <Layout>CONTENT</Layout>;
 };
 
 export default Landing;

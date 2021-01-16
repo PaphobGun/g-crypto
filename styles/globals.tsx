@@ -12,8 +12,16 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     box-sizing: border-box;
 
-    background: #1A1E1E;
-    color: #E8E8E8;
+    background: ${({
+      theme: {
+        colors: { background },
+      },
+    }) => background};
+    color: ${({
+      theme: {
+        colors: { textSecondary },
+      },
+    }) => textSecondary};
     font-family: Helvetica, Arial, sans-serif;
   }`;
 
