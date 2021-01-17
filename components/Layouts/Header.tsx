@@ -28,6 +28,8 @@ const CustomHeader = styled.div`
 
   padding: 0 250px;
 
+  color: white;
+
   background: ${({
     theme: {
       colors: { secondary },

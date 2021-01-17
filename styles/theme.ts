@@ -5,8 +5,9 @@ const theme: DefaultTheme = {
     primary: '#02D667',
     secondary: '#293233',
     textPrimary: '#02D667',
-    textSecondary: '#E8E8E8',
+    textSecondary: '#9B9B9B',
     background: '#1A1E1E',
+    danger: '#FA6565',
   },
   breakpoints: {
     xs: '480px',

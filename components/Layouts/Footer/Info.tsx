@@ -17,7 +17,10 @@ const Info = () => {
         G-CRYPTO is a hobby project that provides a fundamental analysis of the
         crypto market. In addition to tracking price, volume, market
         capitalization and also technical candlestick charts. API is powered by{' '}
-        <a href="https://www.coingecko.com/" target="_blank">
+        <a
+          href="https://www.coingecko.com/api/documentations/v3"
+          target="_blank"
+        >
           CoinGecko
         </a>{' '}
         and realtime trading charts is powered by{' '}

@@ -8,6 +8,7 @@ declare module 'styled-components' {
       background: string;
       textPrimary: string;
       textSecondary: string;
+      danger: string;
     };
     breakpoints: {
       xs: string;

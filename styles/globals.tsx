@@ -22,7 +22,7 @@ const GlobalStyle = createGlobalStyle`
         colors: { textSecondary },
       },
     }) => textSecondary};
-    font-family: Helvetica, Arial, sans-serif;
+    font-family: 'Dosis', sans-serif;
   }`;
 
 export default GlobalStyle;
