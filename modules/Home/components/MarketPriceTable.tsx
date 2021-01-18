@@ -150,6 +150,7 @@ const Wrapper = styled.div`
       margin-left: 1.5rem;
       font-weight: bold;
       color: white;
+      font-family: 'Roboto-Bold', sans-serif;
     }
   }
 
