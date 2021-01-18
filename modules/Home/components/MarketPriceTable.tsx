@@ -1,9 +1,9 @@
 import { useMemo } from 'react';
-import Image from 'next/image';
 
 import MarketParams from 'modules/Home/interfaces/maket-params.interface';
 import PaginationInterface from 'modules/common/interfaces/pagination.interface';
 import PaginationTable from 'components/Table/PaginationTable';
+import SparkLineChart from 'modules/Home/components/SparkLineChart';
 import { formatAmount } from 'utils/formatter';
 
 type Props = {
@@ -42,7 +42,7 @@ const MarketPriceTable = ({
         title: '',
         dataIndex: 'symbol',
         render: (sym: string) => sym.toUpperCase(),
-        width: 50,
+        width: 40,
       },
       {
         title: 'Price',
@@ -51,6 +51,7 @@ const MarketPriceTable = ({
           price ? `$ ${formatAmount(price, true)}` : 'N/A',
         sorter: (a, b) => a.current_price - b.current_price,
         align: 'right',
+        width: 200,
       },
       {
         title: '1h',
@@ -64,7 +65,7 @@ const MarketPriceTable = ({
           a.price_change_percentage_1h_in_currency -
           b.price_change_percentage_1h_in_currency,
         align: 'right',
-        width: 40,
+        width: 30,
       },
       {
         title: '24h',
@@ -78,7 +79,7 @@ const MarketPriceTable = ({
           a.price_change_percentage_24h_in_currency -
           b.price_change_percentage_24h_in_currency,
         align: 'right',
-        width: 40,
+        width: 30,
       },
       {
         title: '7d',
@@ -92,7 +93,7 @@ const MarketPriceTable = ({
           a.price_change_percentage_7d_in_currency -
           b.price_change_percentage_7d_in_currency,
         align: 'right',
-        width: 40,
+        width: 30,
       },
       {
         title: '24h Volume',
@@ -100,6 +101,7 @@ const MarketPriceTable = ({
         render: (num: number) => (num ? `$ ${formatAmount(num)}` : 'N/A'),
         sorter: (a, b) => a.total_volume - b.total_volume,
         align: 'right',
+        width: 200,
       },
       {
         title: 'Market Cap',
@@ -107,6 +109,14 @@ const MarketPriceTable = ({
         render: (num: number) => (num ? `$ ${formatAmount(num)}` : 'N/A'),
         sorter: (a, b) => a.market_cap - b.market_cap,
         align: 'right',
+        width: 200,
+      },
+      {
+        title: 'Last 7 days',
+        dataIndex: '7d_chart',
+        render: (_: any, record: any) => (
+          <SparkLineChart prices={record?.sparkline_in_7d?.price} />
+        ),
       },
     ],
     [pagination.current]
