@@ -13,7 +13,7 @@ const MainContent = ({ children }: Props) => {
 };
 
 const StyledContent = styled(Content)`
-  padding: 70px 270px;
+  padding: 70px 250px;
 
   background: ${({
     theme: {

@@ -16,6 +16,11 @@ const Header = () => {
           <span>Home</span>
         </Link>
       </div>
+      <div className="nav-item">
+        <Link href="/exchanges">
+          <span>Exchanges</span>
+        </Link>
+      </div>
       <div className="repo nav-item">GITHUB REPO</div>
     </CustomHeader>
   );

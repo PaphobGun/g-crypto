@@ -10,7 +10,7 @@ type Props = {
   columns: Array<any>;
   dataSource: Array<any>;
   rowKey: string;
-  isLoading: boolean;
+  isLoading?: boolean;
   pagination: PaginationInterface;
   onChange: (newParams: MarketParams) => void;
 };
@@ -19,7 +19,7 @@ const PaginationTable = ({
   columns,
   rowKey,
   dataSource,
-  isLoading,
+  isLoading = false,
   pagination,
   onChange = () => {},
 }: Props) => {
@@ -56,33 +56,6 @@ const PaginationTable = ({
 const Wrapper = styled.div`
   .table-wrapper {
     margin-bottom: 3rem;
-
-    .name-wrapper {
-      display: flex;
-      align-items: center;
-
-      .name {
-        margin-left: 1.5rem;
-        font-weight: bold;
-        color: white;
-      }
-    }
-
-    .positive {
-      color: ${({
-        theme: {
-          colors: { primary },
-        },
-      }) => primary};
-    }
-
-    .negative {
-      color: ${({
-        theme: {
-          colors: { danger },
-        },
-      }) => danger};
-    }
   }
 
   .pagination-wrapper {

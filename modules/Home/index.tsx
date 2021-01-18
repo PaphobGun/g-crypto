@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 import MarketParams from 'modules/Home/interfaces/maket-params.interface';
 import Layout from 'components/Layouts';
@@ -33,7 +33,7 @@ const HomeModule = () => {
         pagination={{
           current: marketParams.page,
           pageSize: marketParams.perPage,
-          total: 6200,
+          total: data?.length ? 6200 : 0,
         }}
       />
     </Layout>

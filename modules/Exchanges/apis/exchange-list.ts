@@ -1,10 +1,10 @@
 import useSWR from 'swr';
 
-import MarketParams from 'modules/Home/interfaces/maket-params.interface';
+import type ExchangeParams from 'modules/Exchanges/interfaces/exchange-params.interface';
 import { getPathWithParams } from 'utils/formatter';
 
-const useMarketPrice = (queryParams: MarketParams) => {
-  const path = '/coins/markets';
+const useExchangeList = (queryParams: ExchangeParams) => {
+  const path = '/exchanges';
   const pathWithParams = getPathWithParams(path, queryParams);
 
   const { data, error, mutate } = useSWR(pathWithParams);
@@ -17,4 +17,4 @@ const useMarketPrice = (queryParams: MarketParams) => {
   };
 };
 
-export default useMarketPrice;
+export default useExchangeList;
