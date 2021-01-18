@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import styled from 'styled-components';
 
 import MarketParams from 'modules/Home/interfaces/maket-params.interface';
 import Layout from 'components/Layouts';
@@ -26,6 +27,7 @@ const HomeModule = () => {
 
   return (
     <Layout>
+      <Title>Cryptocurrency Prices by Market Cap</Title>
       <MarketPriceTable
         dataSource={data}
         isLoading={isLoading}
@@ -39,5 +41,12 @@ const HomeModule = () => {
     </Layout>
   );
 };
+
+const Title = styled.div`
+  font-size: 3rem;
+  font-family: 'Dosis', sans-serif;
+  text-align: center;
+  margin-bottom: 3rem;
+`;
 
 export default HomeModule;

@@ -1,4 +1,5 @@
 import { useMemo } from 'react';
+import Link from 'next/link';
 import styled from 'styled-components';
 
 import MarketParams from 'modules/Home/interfaces/maket-params.interface';
@@ -33,10 +34,12 @@ const MarketPriceTable = ({
         title: 'Coin',
         dataIndex: 'name',
         render: (name: string, record: MarketRecord) => (
-          <span className="name-wrapper">
-            <img src={record.image} width={18} height={18} />{' '}
-            <span className="name">{name}</span>
-          </span>
+          <Link href={`/coin/${record.id}`}>
+            <span className="name-wrapper">
+              <img src={record.image} width={18} height={18} />{' '}
+              <span className="name">{name}</span>
+            </span>
+          </Link>
         ),
         width: 200,
       },
@@ -145,12 +148,17 @@ const Wrapper = styled.div`
   .name-wrapper {
     display: flex;
     align-items: center;
+    cursor: pointer;
 
     .name {
       margin-left: 1.5rem;
       font-weight: bold;
       color: white;
       font-family: 'Roboto-Bold', sans-serif;
+    }
+
+    .name:hover {
+      text-decoration: underline;
     }
   }
 
