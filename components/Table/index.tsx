@@ -29,9 +29,9 @@ export default styled(Table)`
     tr > td.ant-table-column-sort {
       background: ${({
         theme: {
-          colors: { background },
+          colors: { secondary },
         },
-      }) => background};
+      }) => secondary};
     }
 
     font-family: 'Roboto', sans-serif;
