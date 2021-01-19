@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import MarketParams from 'modules/Home/interfaces/maket-params.interface';
 import Layout from 'components/Layouts';
-import MarketPriceTable from 'modules/Home/components/MarketPriceTable';
+import MarketPriceTable from 'modules/Home/components/Table/MarketPriceTable';
 import useMarketPrice from 'modules/Home/apis/market-price';
 
 const HomeModule = () => {

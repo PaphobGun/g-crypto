@@ -7,12 +7,22 @@ import PaginationInterface from 'modules/common/interfaces/pagination.interface'
 import StyledTable from 'components/Table';
 
 type Props = {
-  columns: Array<any>;
+  columns: ColumnsType;
   dataSource: Array<any>;
   rowKey: string;
   isLoading?: boolean;
   pagination: PaginationInterface;
   onChange: (newParams: MarketParams) => void;
+  onRow?: (
+    record: any,
+    index: number
+  ) => {
+    onClick?: (event) => void;
+    onDoubleClick?: (event) => void;
+    onContextMenu?: (event) => void;
+    onMouseEnter?: (event) => void;
+    onMouseLeave?: (event) => void;
+  };
 };
 
 const PaginationTable = ({
@@ -21,7 +31,8 @@ const PaginationTable = ({
   dataSource,
   isLoading = false,
   pagination,
-  onChange = () => {},
+  onRow,
+  onChange,
 }: Props) => {
   const handleOnChangePagination = (page: number) => {
     onChange({ page });
@@ -31,6 +42,7 @@ const PaginationTable = ({
     <Wrapper>
       <div className="table-wrapper">
         <StyledTable
+          onRow={onRow}
           columns={columns}
           rowKey={rowKey}
           dataSource={dataSource}

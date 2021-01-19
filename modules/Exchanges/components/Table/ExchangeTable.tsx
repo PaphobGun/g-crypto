@@ -1,11 +1,12 @@
 import { useMemo } from 'react';
 import { Progress } from 'antd';
 import styled from 'styled-components';
+import type { ColumnsType } from 'antd/lib/table';
 
-import PaginationInterface from 'modules/common/interfaces/pagination.interface';
+import type PaginationInterface from 'modules/common/interfaces/pagination.interface';
 import PaginationTable from 'components/Table/PaginationTable';
-import ExchangeParams from 'modules/Exchanges/interfaces/exchange-params.interface';
-import ExchangeRecord from 'modules/Exchanges/interfaces/exchange-record.interface';
+import type ExchangeParams from 'modules/Exchanges/interfaces/exchange-params.interface';
+import type ExchangeRecord from 'modules/Exchanges/interfaces/exchange-record.interface';
 import { theme } from 'styles/theme';
 import { formatAmount } from 'utils/formatter';
 
@@ -22,7 +23,7 @@ const ExchangeTable = ({
   pagination,
   onChange,
 }: Props) => {
-  const columns = useMemo(
+  const columns: ColumnsType<ExchangeRecord> = useMemo(
     () => [
       {
         title: '#',

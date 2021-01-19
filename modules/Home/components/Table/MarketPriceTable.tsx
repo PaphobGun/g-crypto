@@ -1,12 +1,13 @@
 import { useMemo } from 'react';
-import Link from 'next/link';
+import { useRouter } from 'next/router';
 import styled from 'styled-components';
+import type { ColumnsType } from 'antd/lib/table';
 
-import MarketParams from 'modules/Home/interfaces/maket-params.interface';
-import MarketRecord from 'modules/Home/interfaces/market-record.interface';
-import PaginationInterface from 'modules/common/interfaces/pagination.interface';
+import type MarketParams from 'modules/Home/interfaces/maket-params.interface';
+import type MarketRecord from 'modules/Home/interfaces/market-record.interface';
+import type PaginationInterface from 'modules/common/interfaces/pagination.interface';
 import PaginationTable from 'components/Table/PaginationTable';
-import SparkLineChart from 'modules/Home/components/SparkLineChart';
+import SparkLineChart from 'modules/Home/components/Chart/SparkLineChart';
 import { formatAmount } from 'utils/formatter';
 
 type Props = {
@@ -22,7 +23,9 @@ const MarketPriceTable = ({
   pagination,
   onChange,
 }: Props) => {
-  const columns = useMemo(
+  const router = useRouter();
+
+  const columns: ColumnsType<MarketRecord> = useMemo(
     () => [
       {
         title: '#',
@@ -34,12 +37,10 @@ const MarketPriceTable = ({
         title: 'Coin',
         dataIndex: 'name',
         render: (name: string, record: MarketRecord) => (
-          <Link href={`/coin/${record.id}`}>
-            <span className="name-wrapper">
-              <img src={record.image} width={18} height={18} />{' '}
-              <span className="name">{name}</span>
-            </span>
-          </Link>
+          <span className="name-wrapper">
+            <img src={record.image} width={18} height={18} />{' '}
+            <span className="name">{name}</span>
+          </span>
         ),
         width: 200,
       },
@@ -130,10 +131,17 @@ const MarketPriceTable = ({
     [pagination.current]
   );
 
+  const handleOnRow = (record: MarketRecord, _: number) => ({
+    onClick: (_) => {
+      router.push(`/coin/${record.id}?name=${record.name}`);
+    },
+  });
+
   return (
     <Wrapper>
       <PaginationTable
         rowKey="id"
+        onRow={handleOnRow}
         columns={columns}
         dataSource={dataSource}
         isLoading={isLoading}
@@ -145,6 +153,18 @@ const MarketPriceTable = ({
 };
 
 const Wrapper = styled.div`
+  .ant-table-row {
+    cursor: pointer;
+  }
+
+  .ant-table-row:hover {
+    background: ${({
+      theme: {
+        colors: { secondary },
+      },
+    }) => secondary};
+  }
+
   .name-wrapper {
     display: flex;
     align-items: center;
