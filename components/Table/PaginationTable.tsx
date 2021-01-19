@@ -13,6 +13,7 @@ type Props = {
   isLoading?: boolean;
   pagination: PaginationInterface;
   onChange: (newParams: MarketParams) => void;
+  scroll?: { x: number };
   onRow?: (
     record: any,
     index: number
@@ -27,6 +28,7 @@ type Props = {
 
 const PaginationTable = ({
   columns,
+  scroll,
   rowKey,
   dataSource,
   isLoading = false,
@@ -47,6 +49,7 @@ const PaginationTable = ({
           rowKey={rowKey}
           dataSource={dataSource}
           loading={isLoading}
+          scroll={scroll}
           pagination={false}
         />
       </div>

@@ -17,7 +17,6 @@ const Wrapper = styled.div`
     },
   }) => secondary};
   border-radius: 4px;
-  width: 70rem;
   font-family: 'Roboto', sans-serif;
 `;
 

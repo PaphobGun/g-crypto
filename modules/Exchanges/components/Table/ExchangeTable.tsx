@@ -93,6 +93,7 @@ const ExchangeTable = ({
         dataSource={dataSource}
         isLoading={isLoading}
         pagination={pagination}
+        scroll={{ x: 800 }}
         onChange={onChange}
       />
     </Wrapper>

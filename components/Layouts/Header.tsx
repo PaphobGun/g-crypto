@@ -29,11 +29,9 @@ const Header = () => {
 const CustomHeader = styled.div`
   display: flex;
   align-items: center;
-  gap: 3rem;
-
-  padding: 0 250px;
-
   color: white;
+
+  padding: 0 25rem;
 
   background: ${({
     theme: {
@@ -44,6 +42,7 @@ const CustomHeader = styled.div`
   .nav-item {
     font-size: 2rem;
     cursor: pointer;
+    margin-left: 2rem;
   }
 
   .nav-item:hover {
@@ -56,6 +55,32 @@ const CustomHeader = styled.div`
 
   .repo {
     margin-left: auto;
+  }
+
+  @media only screen and (max-width: ${({
+      theme: {
+        breakpoints: { xxl },
+      },
+    }) => xxl}) {
+    padding: 0 4rem;
+  }
+
+  @media only screen and (max-width: ${({
+      theme: {
+        breakpoints: { xl },
+      },
+    }) => xl}) {
+    padding: 0 2rem;
+  }
+
+  @media only screen and (max-width: ${({
+      theme: {
+        breakpoints: { xs },
+      },
+    }) => xs}) {
+    .nav-item {
+      font-size: 1.8rem;
+    }
   }
 `;
 
