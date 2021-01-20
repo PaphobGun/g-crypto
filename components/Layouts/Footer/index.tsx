@@ -25,7 +25,7 @@ const MainFooter = () => {
 };
 
 const StyledFooter = styled(Footer)`
-  padding: 20px 250px;
+  padding: 2rem 25rem;
 
   min-height: 8.5rem;
 
@@ -42,6 +42,22 @@ const StyledFooter = styled(Footer)`
       },
     }) => textSecondary};
     text-align: center;
+  }
+
+  @media only screen and (max-width: ${({
+      theme: {
+        breakpoints: { xxl },
+      },
+    }) => xxl}) {
+    padding: 7rem 4rem;
+  }
+
+  @media only screen and (max-width: ${({
+      theme: {
+        breakpoints: { xl },
+      },
+    }) => xl}) {
+    padding: 7rem 2rem;
   }
 `;
 

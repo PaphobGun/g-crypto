@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 import Layout from 'components/Layouts';
-import ExchangeTable from 'modules/Exchanges/components/ExchangeTable';
+import ExchangeTable from 'modules/Exchanges/components/Table/ExchangeTable';
 import useExchangeList from 'modules/Exchanges/apis/exchange-list';
 import ExchangeParams from 'modules/Exchanges/interfaces/exchange-params.interface';
 

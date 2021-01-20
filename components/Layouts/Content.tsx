@@ -13,7 +13,7 @@ const MainContent = ({ children }: Props) => {
 };
 
 const StyledContent = styled(Content)`
-  padding: 70px 250px;
+  padding: 7rem 25rem;
 
   background: ${({
     theme: {
@@ -26,7 +26,7 @@ const StyledContent = styled(Content)`
         breakpoints: { xxl },
       },
     }) => xxl}) {
-    padding: 70px 40px;
+    padding: 7rem 4rem;
   }
 
   @media only screen and (max-width: ${({
@@ -34,7 +34,7 @@ const StyledContent = styled(Content)`
         breakpoints: { xl },
       },
     }) => xl}) {
-    padding: 70px 20px;
+    padding: 7rem 2rem;
   }
 `;
 
