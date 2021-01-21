@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import styled from 'styled-components';
-import { LineChart, Line, ResponsiveContainer } from 'recharts';
+import { LineChart, Line, ResponsiveContainer, YAxis } from 'recharts';
 
 import { theme } from 'styles/theme';
 
@@ -22,8 +22,9 @@ const SparkLineChart = ({ prices = [] }: Props) => {
 
   return (
     <Wrapper>
-      <ResponsiveContainer aspect={3}>
-        <LineChart data={data} margin={{ bottom: -15 }}>
+      <ResponsiveContainer>
+        <LineChart data={data} margin={{ left: -50 }}>
+          <YAxis domain={['auto', 'auto']} display="none" />
           <Line
             dataKey="p"
             type="basis"

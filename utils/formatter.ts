@@ -32,6 +32,11 @@ const getPathWithParams = (path: string, params: object) => {
 
 const formatAmount = (amount: string | number, precision: boolean = false) => {
   if (!amount) return '';
+
+  if (amount < 1 && amount > 0) {
+    return amount;
+  }
+
   const [int, decimal] = amount.toString().split('.');
   return `${int.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}${
     precision ? `.${decimal || '00'}` : ''

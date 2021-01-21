@@ -24,8 +24,8 @@ const StatsItem = ({ title, value, iconTitle, prefix }: Props) => {
               <span className="stats-title">{title}</span>
             </div>
           }
-          value={value}
-          prefix={prefix}
+          value={value || 'N/A'}
+          prefix={value ? prefix : undefined}
         />
       </Card>
     </Wrapper>
@@ -39,6 +39,7 @@ const Wrapper = styled.div`
     }
 
     .stats-title {
+      font-family: 'Roboto', sans-serif;
     }
   }
 `;
