@@ -1,4 +1,5 @@
 import { useMemo } from 'react';
+import { useRouter } from 'next/router';
 import { Progress } from 'antd';
 import styled from 'styled-components';
 import type { ColumnsType } from 'antd/lib/table';
@@ -23,6 +24,8 @@ const ExchangeTable = ({
   pagination,
   onChange,
 }: Props) => {
+  const router = useRouter();
+
   const columns: ColumnsType<ExchangeRecord> = useMemo(
     () => [
       {
@@ -85,10 +88,17 @@ const ExchangeTable = ({
     [pagination.current]
   );
 
+  const handleOnRow = (record: ExchangeRecord, _: number) => ({
+    onClick: (_) => {
+      router.push(`/exchanges/${record.id}`);
+    },
+  });
+
   return (
     <Wrapper>
       <PaginationTable
         rowKey="id"
+        onRow={handleOnRow}
         columns={columns}
         dataSource={dataSource}
         isLoading={isLoading}
@@ -101,6 +111,18 @@ const ExchangeTable = ({
 };
 
 const Wrapper = styled.div`
+  .ant-table-row {
+    cursor: pointer;
+  }
+
+  .ant-table-row:hover {
+    background: ${({
+      theme: {
+        colors: { secondary },
+      },
+    }) => secondary};
+  }
+
   .name-wrapper {
     display: flex;
     align-items: center;
@@ -109,6 +131,10 @@ const Wrapper = styled.div`
       margin-left: 1.5rem;
       font-family: 'Roboto-Bold', sans-serif;
       color: white;
+    }
+
+    .name:hover {
+      text-decoration: underline;
     }
   }
 `;
