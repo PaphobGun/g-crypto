@@ -1,11 +1,10 @@
 import styled from 'styled-components';
 import Link from 'next/link';
-import Image from 'next/image';
 
 const Header = () => {
   return (
     <CustomHeader>
-      <Image
+      <img
         src="/static/images/logo-img.png"
         alt="Main Logo"
         width={80}
