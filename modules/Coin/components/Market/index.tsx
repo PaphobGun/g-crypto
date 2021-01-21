@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo } from 'react';
 import styled from 'styled-components';
 
 import ChartRangePicker from 'modules/Coin/components/Market/ChartRangePicker';
@@ -33,10 +33,6 @@ const Market = ({ coindId }: Props) => {
     [data, typeValue]
   );
 
-  useEffect(() => {
-    console.log(timeSeries);
-  }, [timeSeries]);
-
   const handleChangeDays = (newDays: DayRange) => {
     setCoinMarketParams((prevParams) => ({
       ...prevParams,
@@ -58,9 +54,13 @@ const Market = ({ coindId }: Props) => {
           onChangeType={handleChangeType}
         />
       </div>
-      <div className="chart-title">TITLE</div>
       <div className="chart-container">
-        <MarketChart series={timeSeries} />
+        <MarketChart
+          series={timeSeries}
+          range={coinMarketParams.days}
+          type={typeValue}
+          loading={isLoading}
+        />
       </div>
     </Wrapper>
   );
@@ -77,10 +77,6 @@ const Wrapper = styled.div`
 
   .picker-container {
     margin-bottom: 3rem;
-  }
-
-  .chart-title {
-    margin-bottom: 2rem;
   }
 
   .chart-container {

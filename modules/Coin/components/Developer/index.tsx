@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { Row, Col } from 'antd';
+import { Row, Col, Skeleton } from 'antd';
 import styled from 'styled-components';
 import {
   GithubOutlined,
@@ -52,7 +52,11 @@ const statsKeys = [
 ];
 
 const Developer = ({ coinId }: Props) => {
-  const { data } = useCoinDetail({ id: coinId });
+  const { data, isLoading } = useCoinDetail({ id: coinId });
+
+  if (isLoading) {
+    return <Skeleton />;
+  }
 
   const repo = useMemo(() => {
     const githubRepos = data?.links?.repos_url?.github;

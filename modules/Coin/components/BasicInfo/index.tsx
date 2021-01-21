@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Skeleton } from 'antd';
 
 import useCoinDetail from 'modules/Coin/apis/coin-detail';
 import Title from 'modules/Coin/components/BasicInfo/Title';
@@ -9,7 +10,11 @@ type Props = {
 };
 
 const BasicInfo = ({ coinId }: Props) => {
-  const { data } = useCoinDetail({ id: coinId });
+  const { data, isLoading } = useCoinDetail({ id: coinId });
+
+  if (isLoading) {
+    return <Skeleton />;
+  }
 
   return (
     <Wrapper>

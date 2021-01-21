@@ -47,6 +47,14 @@ const Title = styled.div`
   font-family: 'Dosis', sans-serif;
   text-align: center;
   margin-bottom: 3rem;
+
+  @media only screen and (max-width: ${({
+      theme: {
+        breakpoints: { sm },
+      },
+    }) => sm}) {
+    font-size: 2.5rem;
+  }
 `;
 
 export default HomeModule;
