@@ -176,9 +176,6 @@ const Wrapper = styled.div`
       font-weight: bold;
       color: white;
       font-family: 'Roboto-Bold', sans-serif;
-    }
-
-    .name:hover {
       text-decoration: underline;
     }
   }

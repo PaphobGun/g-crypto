@@ -131,9 +131,6 @@ const Wrapper = styled.div`
       margin-left: 1.5rem;
       font-family: 'Roboto-Bold', sans-serif;
       color: white;
-    }
-
-    .name:hover {
       text-decoration: underline;
     }
   }
