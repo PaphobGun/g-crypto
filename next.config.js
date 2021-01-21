@@ -12,4 +12,5 @@ module.exports = {
   images: {
     domains: ['assets.coingecko.com'],
   },
+  target: 'serverless',
 };
