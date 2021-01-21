@@ -5,11 +5,11 @@ import { Tabs } from 'antd';
 import Layout from 'components/Layouts';
 import Breadcrumb from 'components/Breadcrumb';
 import BasicInfo from 'modules/Coin/components/BasicInfo';
-import Social from 'modules/Coin/components/Social';
-import Stats from 'modules/Coin/components/Stats';
 import Developer from 'modules/Coin/components/Developer';
-import useCoinDetail from 'modules/Coin/apis/coin-detail';
 import useQuery from 'utils/useQuery';
+import Market from 'modules/Coin/components/Market';
+import TradingView from 'modules/Coin/components/TradingView';
+import useCoinDetail from 'modules/Coin/apis/coin-detail';
 
 const { TabPane } = Tabs;
 
@@ -30,7 +30,7 @@ const CoinDetail = () => {
     setCoinName(name as string);
   }, [queryParams]);
 
-  const { data, isLoading, mutate } = useCoinDetail({ id: coinId });
+  const { data } = useCoinDetail({ id: coinId });
 
   return (
     <Layout>
@@ -45,14 +45,14 @@ const CoinDetail = () => {
           <BasicInfo coinId={coinId} />
         </div>
         <div className="tab">
-          <Tabs defaultActiveKey="1">
-            <TabPane tab="Stats" key="1">
-              <Stats coinId={coinId} />
+          <Tabs defaultActiveKey="tv">
+            <TabPane tab="TradingView" key="tv">
+              <TradingView sym={`${data?.symbol?.toLocaleUpperCase()}USD`} />
             </TabPane>
-            <TabPane tab="Social" key="2">
-              <Social coinId={coinId} />
+            <TabPane tab="Market" key="market">
+              <Market coindId={coinId} />
             </TabPane>
-            <TabPane tab="Developer" key="3">
+            <TabPane tab="Developer" key="developer">
               <Developer coinId={coinId} />
             </TabPane>
           </Tabs>
@@ -73,6 +73,10 @@ const Wrapper = styled.div`
 
   .tab {
     font-family: 'Roboto';
+
+    .ant-tabs-tab {
+      font-size: 2rem;
+    }
   }
 `;
 

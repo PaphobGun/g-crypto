@@ -8,7 +8,14 @@
 @font-face {
   font-family: 'Dosis-Bold';
   src: url('Dosis/Dosis-Bold.ttf') format('truetype');
-  font-weight: normal;
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Dosis-Light';
+  src: url('Dosis/Dosis-Light.ttf') format('truetype');
+  font-weight: lighter;
   font-style: normal;
 }
 
@@ -23,5 +30,12 @@
   font-family: 'Roboto-Bold';
   src: url('Roboto/Roboto-Bold.ttf') format('truetype');
   font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Roboto-Light';
+  src: url('Roboto/Roboto-Light.ttf') format('truetype');
+  font-weight: lighter;
   font-style: normal;
 }

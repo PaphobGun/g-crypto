@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Popover } from 'antd';
 
 import { formatAmount } from 'utils/formatter';
 
@@ -21,14 +22,16 @@ const Title = ({ name, sym, imageUrl, price, priceChangePercent }: Props) => {
         <span className="sym">({sym?.toLocaleUpperCase()})</span>
       </div>
       <div className="price-wrapper">
-        <span className="price">${formatAmount(price)}</span>
-        <span
-          className={`change ${
-            priceChangePercent < 0 ? 'negative' : 'positive'
-          }`}
-        >
-          {priceChangePercent?.toFixed(1)}%
-        </span>
+        <span className="price">{price && `$ ${formatAmount(price)}`}</span>
+        <Popover trigger={['hover']} content="24h Change">
+          <span
+            className={`change ${
+              priceChangePercent < 0 ? 'negative' : 'positive'
+            }`}
+          >
+            {priceChangePercent ? `${priceChangePercent?.toFixed(1)}%` : 'N/A'}
+          </span>
+        </Popover>
       </div>
     </Wrapper>
   );
@@ -48,14 +51,11 @@ const Wrapper = styled.div`
       },
     }) => sm}) {
     flex-direction: column;
-  }
 
-  padding: 2rem;
-  background: ${({
-    theme: {
-      colors: { secondary },
-    },
-  }) => secondary};
+    .price-wrapper {
+      margin-top: 1rem;
+    }
+  }
 
   .name-wrapper {
     display: flex;
@@ -80,9 +80,10 @@ const Wrapper = styled.div`
   }
 
   .price-wrapper {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto-Light', sans-serif;
 
     .price {
+      font-family: 'Roboto', sans-serif;
     }
 
     .change {

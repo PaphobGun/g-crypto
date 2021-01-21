@@ -146,7 +146,7 @@ const MarketPriceTable = ({
         dataSource={dataSource}
         isLoading={isLoading}
         pagination={pagination}
-        scroll={{ x: 1200 }}
+        scroll={{ x: 1180 }}
         onChange={onChange}
       />
     </Wrapper>

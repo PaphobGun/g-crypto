@@ -12,7 +12,7 @@ import {
 
 import useCoinDetail from 'modules/Coin/apis/coin-detail';
 import Divider from 'components/Divider';
-import StatsItem from 'modules/Coin/components/Developer/StatsItem';
+import StatsItem from 'components/Statistic';
 import CommitActivitiesChart from 'modules/Coin/components/Developer/CommitActivitiesChart';
 
 type Props = {

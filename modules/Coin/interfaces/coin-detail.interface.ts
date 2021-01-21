@@ -59,7 +59,8 @@ export interface MarketData {
   alt_date: CurrencyDate;
   market_cap: Currency;
   market_cap_rank: number;
-  total_volumne: number;
+  fully_diluted_valuation: Currency;
+  total_volume: Currency;
   high_24h: Currency;
   low_24h: Currency;
   price_change_24h: number;
