@@ -98,6 +98,7 @@ const TickerTable = ({ dataSource }: Props) => {
   return (
     <Wrapper>
       <Table
+        scroll={{ x: 800 }}
         rowKey={(record: Ticker) => record?.base + record?.target}
         dataSource={dataSource}
         columns={columns}
