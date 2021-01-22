@@ -133,7 +133,7 @@ const MarketPriceTable = ({
 
   const handleOnRow = (record: MarketRecord, _: number) => ({
     onClick: (_) => {
-      router.push(`/coin/${record.id}?name=${record.name}`);
+      router.push(`/coin/${record.id}`);
     },
   });
 
