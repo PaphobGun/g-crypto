@@ -1,17 +1,20 @@
 import { useMemo, useState } from 'react';
+import { useRouter } from 'next/router';
 import styled from 'styled-components';
-
-import Table from 'components/Table';
-import type { Ticker } from 'modules/Exchange/interfaces/exchange-detail';
 import type { PaginationProps } from 'antd/lib/pagination';
 import type { ColumnsType } from 'antd/lib/table';
-import { formatAmount } from 'utils/formatter';
+
+import Table from 'components/Table';
+import type { Ticker } from 'modules/Exchange/interfaces/exchange-detail.interface';
+import ConvertedCell from 'modules/Exchange/components/Tickers/ConvertedCell';
+import PopoverScore from 'modules/Exchange/components/Tickers/PopoverScore';
 
 type Props = {
   dataSource: Array<Ticker>;
 };
 
 const TickerTable = ({ dataSource }: Props) => {
+  const router = useRouter();
   const [currentPage, setCurrentPage] = useState(1);
 
   const handleOnChangePage = (paginationObj: PaginationProps) => {
@@ -25,6 +28,18 @@ const TickerTable = ({ dataSource }: Props) => {
         dataIndex: 'no.',
         render: (_: string, _2: Ticker, index: number) =>
           (currentPage - 1) * 10 + index + 1,
+      },
+      {
+        title: 'Coin',
+        dataIndex: 'base',
+        render: (base: string, record: Ticker) => (
+          <div
+            className="base"
+            onClick={() => router.push(`/coin/${record?.coin_id}`)}
+          >
+            {base}
+          </div>
+        ),
       },
       {
         title: 'Pair',
@@ -41,12 +56,11 @@ const TickerTable = ({ dataSource }: Props) => {
         title: 'Price',
         dataIndex: 'price',
         render: (_: string, record: Ticker) => (
-          <div className="price-wrapper">
-            <div className="price-usd">{`$${formatAmount(
-              record?.converted_last?.usd
-            )}`}</div>
-            <div className="price-pair">{`${record?.last} ${record?.target}`}</div>
-          </div>
+          <ConvertedCell
+            value={record?.converted_last?.usd}
+            pairValue={record?.last}
+            pairLabel={record?.target}
+          />
         ),
         align: 'right',
       },
@@ -55,6 +69,27 @@ const TickerTable = ({ dataSource }: Props) => {
         dataIndex: 'bid_ask_spread_percentage',
         render: (spread: number) => (spread ? `${spread?.toFixed(2)}%` : 'N/A'),
         align: 'right',
+      },
+      {
+        title: '24h Volume',
+        dataIndex: 'volume',
+        render: (volume: number, record: Ticker) => (
+          <ConvertedCell
+            value={record?.converted_volume?.usd}
+            pairValue={record?.volume}
+            pairLabel={record?.base}
+            fixedPair={2}
+          />
+        ),
+        align: 'right',
+      },
+      {
+        title: 'Trust Score',
+        dataIndex: 'trust_score',
+        render: (trustScore: string) => (
+          <PopoverScore trustScore={trustScore} />
+        ),
+        align: 'center',
       },
     ],
     [currentPage]
@@ -79,10 +114,6 @@ const TickerTable = ({ dataSource }: Props) => {
 };
 
 const Wrapper = styled.div`
-  .ant-table-row {
-    cursor: pointer;
-  }
-
   .ant-table-row:hover {
     background: ${({
       theme: {
@@ -91,8 +122,15 @@ const Wrapper = styled.div`
     }) => secondary};
   }
 
-  .pair {
+  .base {
     font-family: 'Roboto-Bold', sans-serif;
+    color: white;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  .pair {
+    font-family: 'Roboto', sans-serif;
     color: white;
     text-decoration: underline;
   }

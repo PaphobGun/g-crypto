@@ -8,6 +8,7 @@ import Basic from 'modules/Exchange/components/Basic';
 import useQuery from 'utils/useQuery';
 import useExchangeDetail from 'modules/Exchange/apis/exchange-detail';
 import Tickers from 'modules/Exchange/components/Tickers';
+import Statistics from 'modules/Exchange/components/Statistics';
 
 const { TabPane } = Tabs;
 
@@ -45,7 +46,9 @@ const Exchange = () => {
             <TabPane tab="Tickers" key="tickers">
               <Tickers tickers={data?.tickers} />
             </TabPane>
-            <TabPane tab="Statistics" key="statistics"></TabPane>
+            <TabPane tab="Statistics" key="statistics">
+              <Statistics id={id} />
+            </TabPane>
           </Tabs>
         </div>
       </Wrapper>

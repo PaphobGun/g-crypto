@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 import TickerTable from 'modules/Exchange/components/Tickers/TickerTable';
-import type { Ticker } from 'modules/Exchange/interfaces/exchange-detail';
+import type { Ticker } from 'modules/Exchange/interfaces/exchange-detail.interface';
 
 type Props = {
   tickers: Array<Ticker>;

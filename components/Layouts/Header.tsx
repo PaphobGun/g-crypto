@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import Link from 'next/link';
+import { GithubOutlined } from '@ant-design/icons';
 
 const Header = () => {
   return (
@@ -20,7 +21,11 @@ const Header = () => {
           <span>Exchanges</span>
         </Link>
       </div>
-      <div className="repo nav-item">GITHUB REPO</div>
+      <div className="repo">
+        <a href="https://github.com/PaphobGun/g-crypto" target="_blank">
+          <GithubOutlined /> Repository
+        </a>
+      </div>
     </CustomHeader>
   );
 };
@@ -29,6 +34,7 @@ const CustomHeader = styled.div`
   display: flex;
   align-items: center;
   color: white;
+  font-size: 2rem;
 
   padding: 0 25rem;
 
@@ -39,7 +45,6 @@ const CustomHeader = styled.div`
   }) => secondary};
 
   .nav-item {
-    font-size: 2rem;
     cursor: pointer;
     margin-left: 2rem;
   }
@@ -54,6 +59,17 @@ const CustomHeader = styled.div`
 
   .repo {
     margin-left: auto;
+    a {
+      color: white;
+    }
+
+    a:hover {
+      color: ${({
+        theme: {
+          colors: { textPrimary },
+        },
+      }) => textPrimary};
+    }
   }
 
   @media only screen and (max-width: ${({

@@ -1,6 +1,6 @@
 import useSWR from 'swr';
 
-import type ExchangeDetail from 'modules/Exchange/interfaces/exchange-detail';
+import type ExchangeDetail from 'modules/Exchange/interfaces/exchange-detail.interface';
 
 const useExchangeDetail = (id: string) => {
   const path = '/exchanges';

@@ -17,9 +17,6 @@ const MainFooter = () => {
           <Contact />
         </Col>
       </Row>
-      <Row className="portfolio">
-        <Col span={24}>PORTFOLIO</Col>
-      </Row>
     </StyledFooter>
   );
 };
@@ -49,7 +46,7 @@ const StyledFooter = styled(Footer)`
         breakpoints: { xxl },
       },
     }) => xxl}) {
-    padding: 7rem 4rem;
+    padding: 2rem 4rem;
   }
 
   @media only screen and (max-width: ${({
@@ -57,7 +54,7 @@ const StyledFooter = styled(Footer)`
         breakpoints: { xl },
       },
     }) => xl}) {
-    padding: 7rem 2rem;
+    padding: 2rem 2rem;
   }
 `;
 

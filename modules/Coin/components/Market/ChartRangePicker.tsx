@@ -1,4 +1,3 @@
-import { MouseEvent } from 'react';
 import styled from 'styled-components';
 import { Radio } from 'antd';
 import type { RadioChangeEvent } from 'antd/lib/radio';

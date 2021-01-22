@@ -17,17 +17,15 @@ const CoinDetail = () => {
   const queryParams = useQuery();
 
   const [coinId, setCoinId] = useState('');
-  const [coinName, setCoinName] = useState('');
 
   useEffect(() => {
     if (!queryParams) {
       return;
     }
 
-    const { id, name } = queryParams;
+    const { id } = queryParams;
 
     setCoinId(id as string);
-    setCoinName(name as string);
   }, [queryParams]);
 
   const { data } = useCoinDetail({ id: coinId });
@@ -38,7 +36,7 @@ const CoinDetail = () => {
         <div className="bread">
           <Breadcrumb separator=">">
             <Breadcrumb.Item href="/">Coin</Breadcrumb.Item>
-            <Breadcrumb.Item>{coinName}</Breadcrumb.Item>
+            <Breadcrumb.Item>{data?.name}</Breadcrumb.Item>
           </Breadcrumb>
         </div>
         <div className="basic">

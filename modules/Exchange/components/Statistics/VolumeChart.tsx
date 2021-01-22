@@ -1,6 +1,4 @@
 import { useMemo } from 'react';
-import styled from 'styled-components';
-import { LoadingOutlined } from '@ant-design/icons';
 import {
   LineChart,
   Line,
@@ -13,24 +11,20 @@ import {
 import moment from 'moment';
 
 import { theme } from 'styles/theme';
-import type DayRange from 'modules/Coin/interfaces/day-range.interface';
-import type MarketType from 'modules/Coin/interfaces/market-type.interface';
 import { formatAmount } from 'utils/formatter';
 import DateFormat from 'modules/common/enum/date.format.enum';
+import type { Range } from 'modules/Exchange/interfaces/volume-chart-params.interface';
+import Spinner from 'components/Spinner';
 
-const { HOUR_MINUTE, DATE_MONTH, MONTH_YEAR, FULL } = DateFormat;
+const { HOUR_MINUTE, DATE_MONTH, FULL } = DateFormat;
 
 type Props = {
-  series: Array<{
-    date: number;
-    value: number;
-  }>;
-  range: DayRange;
-  type: MarketType;
+  series: Array<{ date: number; value: number }>;
+  range: Range;
   loading: boolean;
 };
 
-const MarketChart = ({ series, range, type, loading }: Props) => {
+const VolumeChart = ({ series = [], range, loading }: Props) => {
   const dateFormat = useMemo(() => {
     switch (range) {
       case 1:
@@ -39,17 +33,11 @@ const MarketChart = ({ series, range, type, loading }: Props) => {
         return DATE_MONTH;
       case 30:
         return DATE_MONTH;
-      case 'max':
-        return MONTH_YEAR;
     }
   }, [range]);
 
   if (loading) {
-    return (
-      <SpinWrapper>
-        <LoadingOutlined />
-      </SpinWrapper>
-    );
+    return <Spinner />;
   }
 
   return (
@@ -65,15 +53,11 @@ const MarketChart = ({ series, range, type, loading }: Props) => {
         <YAxis
           dataKey="value"
           domain={['auto', 'auto']}
-          tickFormatter={(val: number) =>
-            type === 'prices'
-              ? `$${formatAmount(val)}`
-              : `$${formatAmount(val / 10 ** 6)}M`
-          }
+          tickFormatter={(val: number) => `${formatAmount(val)}`}
         />
         <Tooltip
           contentStyle={{ color: theme.colors.secondary }}
-          formatter={(val: number) => `$${formatAmount(val)}`}
+          formatter={(val: number) => `${formatAmount(val)} BTC`}
           labelFormatter={(label: number) => moment(label).format(FULL)}
         />
         <Line
@@ -87,17 +71,4 @@ const MarketChart = ({ series, range, type, loading }: Props) => {
   );
 };
 
-const SpinWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  font-size: 10rem;
-  color: ${({
-    theme: {
-      colors: { primary },
-    },
-  }) => primary};
-`;
-
-export default MarketChart;
+export default VolumeChart;
