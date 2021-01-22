@@ -5,7 +5,7 @@ import type { PaginationProps } from 'antd/lib/pagination';
 import type { ColumnsType } from 'antd/lib/table';
 
 import Table from 'components/Table';
-import type { Ticker } from 'modules/Exchange/interfaces/exchange-detail';
+import type { Ticker } from 'modules/Exchange/interfaces/exchange-detail.interface';
 import ConvertedCell from 'modules/Exchange/components/Tickers/ConvertedCell';
 import PopoverScore from 'modules/Exchange/components/Tickers/PopoverScore';
 

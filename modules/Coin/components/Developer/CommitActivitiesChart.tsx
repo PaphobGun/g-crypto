@@ -21,7 +21,7 @@ type Props = {
   data: Array<number>;
 };
 
-const DATE_FORMAT = 'DD/mm/yyyy';
+const DATE_FORMAT = 'D MMM YY';
 
 const CommitActivitiesChart = ({ data = [] }: Props) => {
   const series = useMemo(
@@ -30,7 +30,8 @@ const CommitActivitiesChart = ({ data = [] }: Props) => {
         commit,
         // from 28 days ago to now
         date: moment()
-          .subtract(index + 1, 'days')
+          .subtract(28, 'days')
+          .add(index + 1, 'days')
           .format(DATE_FORMAT),
       })),
     [data]
