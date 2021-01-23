@@ -1,5 +1,7 @@
 ## G-Crypto
 
+Live version: <a href='https://g-crypto.netlify.app' target='_blank'>Visit Here</a>
+
 G-CRYPTO is a hobby project that provides a fundamental analysis of the crypto market. In addition to tracking price, volume, market capitalization and also technical candlestick charts. API is powered by CoinGecko and realtime trading charts is powered by Trading View.
 
 ## Techonoly Stack for Development
